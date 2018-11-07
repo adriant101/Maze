@@ -1,15 +1,14 @@
+import javafx.scene.Group;
+import javafx.scene.Scene;
+
 //This is the parent class which Blocks, Items, Players inherit from
 public class ObjectParent {
-private String imgPath;
-private int xCord;
-private int yCord;
+int blockorclear;
 
-public ObjectParent(String imgPath, int xCord, int yCord) {
-	this.imgPath = imgPath;
-	this.xCord = xCord;
-	this.yCord = yCord;
-	
+public ObjectParent(int blockorclear) {
+this.blockorclear = blockorclear;
 }
+
 
 
 
