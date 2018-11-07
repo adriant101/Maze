@@ -7,6 +7,7 @@ public class Player extends ObjectParent{
 		
 	}
 	
+	
 	//player movement and speed
 	
 	public int moveup(int ycord) {
@@ -29,5 +30,3 @@ public class Player extends ObjectParent{
 		return xcord;
     }
 	}
-
-
