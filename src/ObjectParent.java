@@ -13,6 +13,22 @@ public ObjectParent(String imgPath, int xCord, int yCord) {
 	
 }
 
+public int getxCord() {
+	return xCord;
+}
+
+public int getyCord() {
+	return yCord;
+}
+
+public void setxCord(int xCord) {
+	this.xCord = xCord;
+}
+
+public void setyCord(int yCord) {
+	this.yCord = yCord;
+}
+
 public String getImgPath() {
 	return imgPath;
 }

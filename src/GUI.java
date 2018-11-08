@@ -18,6 +18,8 @@ public class GUI extends Application {
 	
 	private Scene mainScene;
 	private Group mainGroup = new Group();
+	private int playerXcords = 0;
+	private int playerYcords = 0;
 
 	public static void main(String[] args) {
 		launch(args);
@@ -26,7 +28,7 @@ public class GUI extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		Random myran = new Random();
-	
+		mainScene = new Scene(mainGroup, 500, 250, Color.CYAN);
 		String filetoscan = null;
 		int whichmaze = myran.nextInt(2);
 		
@@ -58,37 +60,26 @@ public class GUI extends Application {
 		      }
 		    	  }
 		    }
-			/*mainScene.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
-				int xcords = getxcords();
-				int ycords = getycords();
-				if(key.getCode()==KeyCode.W) {
-			       int x = move.moveup(ycords);
-			       setplayercords(getxcords(), x);
-				       characterimage.setX(getxcords());
-					 characterimage.setY(getycords());
-				    }else if(key.getCode()== KeyCode.A) {
-				    	int y = move.moveleft(xcords);
-					       setplayercords(y, getycords());
-					       characterimage.setX(getxcords());
-					       characterimage.setY(getycords());
-				    	 
-				    }else if(key.getCode()==KeyCode.D) {
-				    	int z = move.moveright(xcords);
-				    	 setplayercords(z, getycords());
-					     characterimage.setX(getxcords());
-					     characterimage.setY(getycords());
-				    } while(key.getCode()==KeyCode.S) {
-				    	int c = move.movedown(ycords);
-				    	   setplayercords(getxcords(), c);
-					       characterimage.setX(getxcords());
-					       characterimage.setY(getycords());
-				    }
-		});*/
-			Player player1 = new Player("file:src\\Michael.jpg",0,0);
+			Player player1 = new Player("file:src\\Michael.jpg",playerXcords,playerYcords);
 			Image playerimg = new Image(player1.getImgPath());
 			ImageView playeriv = new ImageView(playerimg);
 			mainGroup.getChildren().add(playeriv);
-		mainScene = new Scene(mainGroup, 500, 250, Color.CYAN);
+			mainScene.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
+				if(key.getCode()==KeyCode.W) {
+					 playeriv.setY(player1.moveup(playerYcords));
+				    }else if(key.getCode()== KeyCode.A) {
+					       playeriv.setX(player1.moveleft(playerXcords));
+					       
+				    }else if(key.getCode()==KeyCode.D) {
+				    	 playeriv.setX(player1.moveright(playerXcords));
+				    	 
+				    } else if(key.getCode()==KeyCode.S) {
+				    	
+				    	playeriv.setY(player1.movedown(playerYcords));
+				    }
+		});
+			
+		
 		primaryStage.setScene(mainScene);
         primaryStage.setTitle("Lab 9");
         primaryStage.show();
