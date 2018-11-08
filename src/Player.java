@@ -9,24 +9,24 @@ public class Player extends ObjectParent{
 	
 	
 	//player movement and speed
-	
+
 	public int moveup(int ycord) {
-		ycord = ycord - 5 ;
+		ycord = ycord - 50 ;
 		return ycord;
 	}
 
 	public int movedown(int ycord) {
-		ycord = ycord+ 5;
+		ycord = ycord+ 50;
 		return ycord;
 	}
 
 	public int moveleft(int xcord) {
-		xcord = xcord - 5;
+		xcord = xcord - 50;
 		return xcord;
 	}
 
 	public int moveright(int xcord) {
-		xcord = xcord + 5;
+		xcord = xcord + 50;
 		return xcord;
     }
 	}

@@ -67,15 +67,16 @@ public class GUI extends Application {
 			mainScene.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
 				if(key.getCode()==KeyCode.W) {
 					 playeriv.setY(player1.moveup(playerYcords));
+					 playerYcords = player1.moveup(playerYcords);
 				    }else if(key.getCode()== KeyCode.A) {
 					       playeriv.setX(player1.moveleft(playerXcords));
-					       
+					       playerXcords = player1.moveleft(playerXcords);
 				    }else if(key.getCode()==KeyCode.D) {
 				    	 playeriv.setX(player1.moveright(playerXcords));
-				    	 
+				    	 playerXcords = player1.moveright(playerXcords);
 				    } else if(key.getCode()==KeyCode.S) {
-				    	
 				    	playeriv.setY(player1.movedown(playerYcords));
+				    	playerYcords = player1.movedown(playerYcords);
 				    }
 		});
 			
