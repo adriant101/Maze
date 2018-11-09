@@ -52,7 +52,7 @@ public class GUI extends Application {
 			 itemImage.add(new ImageView(items.get(i).getitemimage()));
 			 itemImage.get(i).setX(items.get(i).getxLocation());
 			 itemImage.get(i).setY(items.get(i).getyLocation());
-			 itemImage.get(i).setFitHeight(25);itemImage.get(i).setFitWidth(20);
+			 itemImage.get(i).setFitHeight(50);itemImage.get(i).setFitWidth(50);
 			 mainGroup.getChildren().add(itemImage.get(i));
 			 
 		
