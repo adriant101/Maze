@@ -91,9 +91,9 @@ public class GUI extends Application {
 		    	   playerRect = drawRect.getBounds(playerXcords, playerYcords, 50, 50);
 		  		   blockRectBounds = blockRect.getBoundsInLocal();
 		  		  //Collision Detection
-		  		 Timeline tl = new Timeline();
+		  		 /*Timeline tl = new Timeline();
 		         tl.setCycleCount(Animation.INDEFINITE);
-		  		 KeyFrame oneFrame = new KeyFrame(Duration.seconds(200), (ActionEvent evt) -> {
+		  		 KeyFrame oneFrame = new KeyFrame(Duration.seconds(200), (ActionEvent evt) -> {*/
 		  			 if (blockRectBounds.intersects(playerRect.getBoundsInLocal())){
 		  		 
 			  			collide = 1;
@@ -106,9 +106,9 @@ public class GUI extends Application {
 				  			System.out.println("collision");
 				  		}
 		  		   }*/
-		  		});
-		  		 tl.getKeyFrames().add(oneFrame);
-		         tl.play();
+		  		//});
+		  		 /*tl.getKeyFrames().add(oneFrame);
+		         tl.play();*/
 		  	    
 		    	  mainGroup.getChildren().add(blockimage);
 		    	  
