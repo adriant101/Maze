@@ -1,5 +1,6 @@
 import java.io.File;
-
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -24,7 +25,9 @@ import javafx.util.Duration;
 public class GUI extends Application {
 	
 	 
-	
+	private Items item1 = new Items();
+	private Items item2 = new Items();
+	public  List<Items> items = new ArrayList<Items>();
 	private Scene mainScene;
 	private Group mainGroup = new Group();
 	private int playerXcords = 0;
@@ -33,6 +36,8 @@ public class GUI extends Application {
 	private Bounds blockRectBounds;
 	private Rectangle playerRect, blockRect;
 	private int collide;
+	public List<ImageView> itemImage = new ArrayList<ImageView>();
+	
 
 	public static void main(String[] args) {
 		launch(args);
@@ -40,6 +45,18 @@ public class GUI extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+		items.add(item1);
+		items.add(item2);
+		for (int i = 0; i < items.size();i++ ) {
+			
+			 itemImage.add(new ImageView(items.get(i).getitemimage()));
+			 itemImage.get(i).setX(items.get(i).getxLocation());
+			 itemImage.get(i).setY(items.get(i).getyLocation());
+			 itemImage.get(i).setFitHeight(25);itemImage.get(i).setFitWidth(20);
+			 mainGroup.getChildren().add(itemImage.get(i));
+			 
+		
+			}
 		Random myran = new Random();
 		mainScene = new Scene(mainGroup, 500, 250, Color.CYAN);
 		String filetoscan = null;
@@ -116,7 +133,8 @@ public class GUI extends Application {
 				    	playeriv.setY(player1.movedown(playerYcords));
 				    	playerYcords = player1.movedown(playerYcords);
 				    }
-		});
+		});	
+
 			
 		
 		primaryStage.setScene(mainScene);
