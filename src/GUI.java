@@ -11,7 +11,7 @@ import Game.myTimeHandler;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.animation.TimelineBuilder;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.geometry.Bounds;
@@ -84,7 +84,7 @@ public class GUI extends Application {
 		 thisarray = mygen.Mazescenebuilder();
 		
 		
-		Player player1 = new Player("file:src\\Michael.jpg",playerXcords,playerYcords);
+		Player player1 = new Player("file:src\\Michael.jpg",playerXcords,playerYcords, thisarray);
 			for (int i = 0; i < 5; i++){
 		    for (int j = 0; j < 10; j++) {
 		      if (thisarray[i][j]== 0) {
@@ -125,18 +125,28 @@ public class GUI extends Application {
 			mainGroup.getChildren().add(playeriv);
 			mainScene.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
 				if(key.getCode()==KeyCode.W) {
+					if (player1.check2d(4) == true){
 					 playeriv.setY(player1.moveup(playerYcords));
-					 playerYcords = player1.moveup(playerYcords);
+					 playerYcords = player1.moveup(playerYcords);}else {
+						 System.out.println("Wall");
+					 }
 				    }else if(key.getCode()== KeyCode.A) {
+				    	if (player1.check2d(1) == true) {
 					       playeriv.setX(player1.moveleft(playerXcords));
-					       playerXcords = player1.moveleft(playerXcords);
+					       playerXcords = player1.moveleft(playerXcords);}else
+					    	   System.out.println("Wall");
 				    }else if(key.getCode()==KeyCode.D) {
+				    	if (player1.check2d(2) == true) {
 				    	 playeriv.setX(player1.moveright(playerXcords));
-				    	 playerXcords = player1.moveright(playerXcords);
+				    	 playerXcords = player1.moveright(playerXcords);}else {
+				    		 System.out.println("Wall");}
 				    } else if(key.getCode()==KeyCode.S) {
+				    	if (player1.check2d(3) == true) {
 				    	playeriv.setY(player1.movedown(playerYcords));
-				    	playerYcords = player1.movedown(playerYcords);
-				    }
+				    	playerYcords = player1.movedown(playerYcords);}else {
+				    		System.out.println("Wall");}
+				    	}
+				    
 		});	
 
 			
