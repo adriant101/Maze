@@ -1,9 +1,13 @@
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
+import javax.swing.Timer;
+
+import Game.myTimeHandler;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -24,7 +28,7 @@ import javafx.util.Duration;
 
 public class GUI extends Application {
 	
-	 
+	public Timer newTimer = new Timer(200, new myTimeHandler());
 	private Items item1 = new Items();
 	private Items item2 = new Items();
 	public  List<Items> items = new ArrayList<Items>();
@@ -36,6 +40,12 @@ public class GUI extends Application {
 	private Bounds blockRectBounds;
 	private Rectangle playerRect, blockRect;
 	private int collide;
+	int xcords = 0;
+	int ycords = 0;
+	File myfile;
+	Scanner myscan;
+	Mazescenegenerator mygen;
+	int[][] thisarray;
 	public List<ImageView> itemImage = new ArrayList<ImageView>();
 	
 
@@ -45,6 +55,7 @@ public class GUI extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+		newTimer.start();
 		items.add(item1);
 		items.add(item2);
 		for (int i = 0; i < items.size();i++ ) {
@@ -67,12 +78,12 @@ public class GUI extends Application {
 		}else if (whichmaze ==1) {
 			filetoscan = "src\\secondmaze.txt";
 		}
-		File myfile = new File(filetoscan);
-		Scanner myscan = new Scanner(myfile);
-		Mazescenegenerator mygen = new Mazescenegenerator(myscan);
-		int[][] thisarray = mygen.Mazescenebuilder();
-		int xcords = 0;
-		int ycords = 0;
+		 myfile = new File(filetoscan);
+		 myscan = new Scanner(myfile);
+		 mygen = new Mazescenegenerator(myscan);
+		 thisarray = mygen.Mazescenebuilder();
+		
+		
 		Player player1 = new Player("file:src\\Michael.jpg",playerXcords,playerYcords);
 			for (int i = 0; i < 5; i++){
 		    for (int j = 0; j < 10; j++) {
@@ -87,19 +98,12 @@ public class GUI extends Application {
 		    	  blockimage.setLayoutX(xcords);
 		    	  blockimage.setLayoutY(ycords);
 		    	  //Drawing rectangles
-		    	   blockRect = drawRect.getBounds(xcords, ycords, 50, 50);
-		    	   playerRect = drawRect.getBounds(playerXcords, playerYcords, 50, 50);
-		  		   blockRectBounds = blockRect.getBoundsInLocal();
+		    	
 		  		  //Collision Detection
 		  		 /*Timeline tl = new Timeline();
 		         tl.setCycleCount(Animation.INDEFINITE);
 		  		 KeyFrame oneFrame = new KeyFrame(Duration.seconds(200), (ActionEvent evt) -> {*/
-		  			 if (blockRectBounds.intersects(playerRect.getBoundsInLocal())){
-		  		 
-			  			collide = 1;
-			  			System.out.println("collision");
-			  		}
-		  			 
+		  			
 		  		
 		  		  /* while (collide != 1){
 		  			 if (blockRectBounds.intersects(playerRect.getBoundsInLocal())){
@@ -141,5 +145,25 @@ public class GUI extends Application {
         primaryStage.setTitle("Lab 9");
         primaryStage.show();
 	}
+	public class myTimeHandler implements ActionListener {
 
-}
+
+		@Override
+		public void actionPerformed(java.awt.event.ActionEvent arg0) {
+			for (int i = 0; i < 5; i++){
+			    for (int j = 0; j < 10; j++) {
+			    	if (thisarray[i][j] == 1) {
+			   blockRect = drawRect.getBounds(xcords, ycords, 48, 48);
+	    	   playerRect = drawRect.getBounds(playerXcords, playerYcords, 50, 50);
+	  		   blockRectBounds = blockRect.getBoundsInLocal();}}
+			
+			    if (blockRectBounds.intersects(playerRect.getBoundsInLocal())){
+				  
+		  			collide = 1;
+		  			System.out.println("collision");
+		  		}}}
+	  			 
+			
+		}}
+
+
