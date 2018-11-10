@@ -32,9 +32,19 @@ public class Player extends ObjectParent{
 			
 			if (array[row][column] == 0) {
 				return true;
-			}else {
-				return false;
-			}
+			}else if (direction == 1 && array[row][column]== 1) {
+				row = row+1;
+			}else if (direction ==2 && array[row][column]== 1 ) {
+				row = row - 1;
+				
+				}else if (direction == 3 && array[row][column]== 1 ) {
+				column = column + 1;
+				
+				}else if (direction == 4 && array[row][column]== 1 ) {
+				column = column -1;
+				
+				}
+			return false;
 			
 		
 		
