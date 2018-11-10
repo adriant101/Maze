@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 import javax.swing.Timer;
 
-import Game.myTimeHandler;
+//import Game.myTimeHandler;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -28,7 +28,7 @@ import javafx.util.Duration;
 
 public class GUI extends Application {
 	
-	public Timer newTimer = new Timer(200, new myTimeHandler());
+	//public Timer newTimer = new Timer(200, new myTimeHandler());
 	private Items item1 = new Items();
 	private Items item2 = new Items();
 	public  List<Items> items = new ArrayList<Items>();
@@ -55,7 +55,7 @@ public class GUI extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		newTimer.start();
+		//newTimer.start();
 		items.add(item1);
 		items.add(item2);
 		for (int i = 0; i < items.size();i++ ) {
@@ -97,22 +97,7 @@ public class GUI extends Application {
 		    	  blockimage = new ImageView(myimage);
 		    	  blockimage.setLayoutX(xcords);
 		    	  blockimage.setLayoutY(ycords);
-		    	  //Drawing rectangles
-		    	
-		  		  //Collision Detection
-		  		 /*Timeline tl = new Timeline();
-		         tl.setCycleCount(Animation.INDEFINITE);
-		  		 KeyFrame oneFrame = new KeyFrame(Duration.seconds(200), (ActionEvent evt) -> {*/
-		  			
-		  		
-		  		  /* while (collide != 1){
-		  			 if (blockRectBounds.intersects(playerRect.getBoundsInLocal())){
-				  			System.out.println("collision");
-				  		}
-		  		   }*/
-		  		//});
-		  		 /*tl.getKeyFrames().add(oneFrame);
-		         tl.play();*/
+		    	  
 		  	    
 		    	  mainGroup.getChildren().add(blockimage);
 		    	  
@@ -124,38 +109,39 @@ public class GUI extends Application {
 			ImageView playeriv = new ImageView(playerimg);
 			mainGroup.getChildren().add(playeriv);
 			mainScene.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
-				if(key.getCode()==KeyCode.W) {
-					if (player1.check2d(4) == true){
-					 playeriv.setY(player1.moveup(playerYcords));
-					 playerYcords = player1.moveup(playerYcords);}else {
-						 System.out.println("Wall");
-					 }
-				    }else if(key.getCode()== KeyCode.A) {
-				    	if (player1.check2d(1) == true) {
+						if(key.getCode()==KeyCode.W) {
+						if (player1.check2d(1) == true){
+						playeriv.setY(player1.moveup(playerYcords));
+						playerYcords = player1.moveup(playerYcords);}else {
+						 System.out.println("Wall");}}
+						if(key.getCode()== KeyCode.A) {
+				    	if (player1.check2d(3) == true) {
 					       playeriv.setX(player1.moveleft(playerXcords));
-					       playerXcords = player1.moveleft(playerXcords);}else
-					    	   System.out.println("Wall");
-				    }else if(key.getCode()==KeyCode.D) {
-				    	if (player1.check2d(2) == true) {
+					       playerXcords = player1.moveleft(playerXcords);}else {
+					    	   System.out.println("Wall");}}
+				
+				    	if(key.getCode()==KeyCode.D) {
+				    	if (player1.check2d(4) == true) {
 				    	 playeriv.setX(player1.moveright(playerXcords));
 				    	 playerXcords = player1.moveright(playerXcords);}else {
-				    		 System.out.println("Wall");}
-				    } else if(key.getCode()==KeyCode.S) {
-				    	if (player1.check2d(3) == true) {
+				    		 System.out.println("Wall");}}  
+				    	
+				    	if(key.getCode()==KeyCode.S) {
+				    	if (player1.check2d(2) == true) {
 				    	playeriv.setY(player1.movedown(playerYcords));
 				    	playerYcords = player1.movedown(playerYcords);}else {
-				    		System.out.println("Wall");}
-				    	}
+				    		System.out.println("Wall");}}
 				    
-		});	
-
 			
+
+			});
 		
 		primaryStage.setScene(mainScene);
         primaryStage.setTitle("Lab 9");
         primaryStage.show();
-	}
-	public class myTimeHandler implements ActionListener {
+			
+	}}
+	/*public class myTimeHandler implements ActionListener {
 
 
 		@Override
@@ -174,6 +160,6 @@ public class GUI extends Application {
 		  		}}}
 	  			 
 			
-		}}
+		}*/
 
 

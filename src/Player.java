@@ -15,23 +15,34 @@ public class Player extends ObjectParent{
 	
 	//player movement and speed
 	public boolean check2d(int direction) {
-		if (direction ==1) {
-		row = row-1;
-		}else if (direction ==2) {
-		row = row + 1;
-		}else if (direction == 3) {
-		column = column - 1;
-		}else if (direction == 4) {
-		column = column +1;
-		}
-		playerpostion = array[row][column];
-		if (playerpostion == 0) {
-			return true;
-		}else {
-			return false;
-		}
+		if (direction == 1 && array[row][column]== 0) {
+			row = row-1;
+			System.out.println(array[row][column]);
+			}else if (direction ==2 && array[row][column]== 0 ) {
+			row = row + 1;
+			System.out.println( array[row][column]);
+			}else if (direction == 3 && array[row][column]== 0 ) {
+			column = column - 1;
+			System.out.println(array[row][column]);
+			}else if (direction == 4 && array[row][column]== 0 ) {
+			column = column +1;
+			System.out.println( array[row][column]);
+			}
+			
+			
+			if (array[row][column] == 0) {
+				return true;
+			}else {
+				return false;
+			}
+			
+		
 		
 	}
+		
+		
+		
+	
 	public int moveup(int ycord) {
 		ycord = ycord - 50 ;
 		return ycord;
