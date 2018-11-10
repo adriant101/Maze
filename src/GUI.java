@@ -23,6 +23,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -47,6 +48,7 @@ public class GUI extends Application {
 	Mazescenegenerator mygen;
 	int[][] thisarray;
 	public List<ImageView> itemImage = new ArrayList<ImageView>();
+	private Text winText = new Text(""); 
 	
 
 	public static void main(String[] args) {
@@ -75,6 +77,7 @@ public class GUI extends Application {
 		
 		if (whichmaze == 0) {
 			filetoscan = "src\\firstmaze.txt";
+			
 		}else if (whichmaze ==1) {
 			filetoscan = "src\\secondmaze.txt";
 		}
@@ -123,19 +126,33 @@ public class GUI extends Application {
 				    	if(key.getCode()==KeyCode.D) {
 				    	if (player1.check2d(4) == true) {
 				    	 playeriv.setX(player1.moveright(playerXcords));
-				    	 playerXcords = player1.moveright(playerXcords);}else {
+				    	 playerXcords = player1.moveright(playerXcords);
+				    	 System.out.println(playerXcords +" x");}else {
 				    		 System.out.println("Wall");}}  
 				    	
 				    	if(key.getCode()==KeyCode.S) {
 				    	if (player1.check2d(2) == true) {
 				    	playeriv.setY(player1.movedown(playerYcords));
-				    	playerYcords = player1.movedown(playerYcords);}else {
+				    	playerYcords = player1.movedown(playerYcords);
+				    	System.out.println(playerYcords);}else {
 				    		System.out.println("Wall");}}
-				    
+				    	
+				    	if (whichmaze == 0 && playerXcords == 450 && playerYcords == 150) {
+							System.out.println("here");
+							winText.setText("Congrats!");
+						}
+						if (whichmaze == 1 && playerXcords == 450 && playerYcords == 200) {
+							winText.setText("Congrats!");
+						} 
 			
 
 			});
 		
+			//win code
+			winText.setX(150);winText.setY(150);winText.setFill(Color.GOLD);winText.setStyle("-fx-font: 48 arial;");
+			mainGroup.getChildren().add(winText);
+			
+			
 		primaryStage.setScene(mainScene);
         primaryStage.setTitle("Lab 9");
         primaryStage.show();
