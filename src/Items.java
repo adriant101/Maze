@@ -36,11 +36,5 @@ public class Items {
 		return imagePath;
 	}
 	
-	public void nextLevelQty() {
-		//itemQty +=2;
-		
-	}
+}
 	
-	public void raiseScore() {
-		
-	}}

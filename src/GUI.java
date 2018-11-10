@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 import javax.swing.Timer;
 
-//import Game.myTimeHandler;
+
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -29,7 +29,7 @@ import javafx.util.Duration;
 
 public class GUI extends Application {
 	
-	//public Timer newTimer = new Timer(200, new myTimeHandler());
+	
 	private Items item1 = new Items();
 	private Items item2 = new Items();
 	public  List<Items> items = new ArrayList<Items>();
@@ -57,7 +57,7 @@ public class GUI extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		//newTimer.start();
+
 		items.add(item1);
 		items.add(item2);
 		for (int i = 0; i < items.size();i++ ) {
@@ -116,29 +116,28 @@ public class GUI extends Application {
 						if (player1.check2d(1) == true){
 						playeriv.setY(player1.moveup(playerYcords));
 						playerYcords = player1.moveup(playerYcords);}else {
-						 System.out.println("Wall");}}
+						 }}
 						if(key.getCode()== KeyCode.A) {
 				    	if (player1.check2d(3) == true) {
 					       playeriv.setX(player1.moveleft(playerXcords));
 					       playerXcords = player1.moveleft(playerXcords);}else {
-					    	   System.out.println("Wall");}}
+					    	   }}
 				
 				    	if(key.getCode()==KeyCode.D) {
 				    	if (player1.check2d(4) == true) {
 				    	 playeriv.setX(player1.moveright(playerXcords));
 				    	 playerXcords = player1.moveright(playerXcords);
-				    	 System.out.println(playerXcords +" x");}else {
-				    		 System.out.println("Wall");}}  
+				    	 }else {
+				    		 }}  
 				    	
 				    	if(key.getCode()==KeyCode.S) {
 				    	if (player1.check2d(2) == true) {
 				    	playeriv.setY(player1.movedown(playerYcords));
 				    	playerYcords = player1.movedown(playerYcords);
-				    	System.out.println(playerYcords);}else {
-				    		System.out.println("Wall");}}
+				    	}else {
+				    		}}
 				    	
 				    	if (whichmaze == 0 && playerXcords == 450 && playerYcords == 150) {
-							System.out.println("here");
 							winText.setText("Congrats!");
 						}
 						if (whichmaze == 1 && playerXcords == 450 && playerYcords == 200) {
@@ -158,25 +157,6 @@ public class GUI extends Application {
         primaryStage.show();
 			
 	}}
-	/*public class myTimeHandler implements ActionListener {
-
-
-		@Override
-		public void actionPerformed(java.awt.event.ActionEvent arg0) {
-			for (int i = 0; i < 5; i++){
-			    for (int j = 0; j < 10; j++) {
-			    	if (thisarray[i][j] == 1) {
-			   blockRect = drawRect.getBounds(xcords, ycords, 48, 48);
-	    	   playerRect = drawRect.getBounds(playerXcords, playerYcords, 50, 50);
-	  		   blockRectBounds = blockRect.getBoundsInLocal();}}
-			
-			    if (blockRectBounds.intersects(playerRect.getBoundsInLocal())){
-				  
-		  			collide = 1;
-		  			System.out.println("collision");
-		  		}}}
-	  			 
-			
-		}*/
+	
 
 
